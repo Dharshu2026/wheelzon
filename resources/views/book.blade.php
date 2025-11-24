@@ -31,46 +31,59 @@
 
       <div class="col-md-6">
         <label class="form-label text-light">Select Bike</label>
-        <select name="bike" class="form-control" required>
-          <option value="">Choose a bike</option>
-          @foreach ($bikes ?? [] as $bike)
-            <option value="{{ $bike->name }}">{{ $bike->name }}</option>
+        <select name="bike_id" class="form-control" required>
+          <option value="">-- Select Bike --</option>
+          @foreach($bikes as $bike)
+            <option value="{{ $bike->id }}" 
+              {{ (isset($selectedBike) && $selectedBike == $bike->id) ? 'selected' : '' }}>
+              {{ $bike->name }}
+            </option>
           @endforeach
         </select>
       </div>
+
+      @php
+        $locations = [
+          'Madurai','Trichy','Coimbatore','Chennai','Tirunelveli','Salem',
+          'Erode','Thanjavur','Dindigul','Nagercoil','Kanyakumari',
+          'Karaikudi','Vellore'
+        ];
+      @endphp
 
       <div class="col-md-6">
         <label class="form-label text-light">Pickup Location</label>
         <select name="pickup_location" class="form-control" required>
           <option value="">Select Pickup Area</option>
-          <option value="Madurai" selected>Madurai</option>
-          <option value="Trichy">Trichy</option>
-          <option value="Coimbatore">Coimbatore</option>
-          <option value="Chennai">Chennai</option>
+          @foreach($locations as $loc)
+            <option value="{{ $loc }}" {{ (isset($pickupLocation) && $pickupLocation==$loc) ? 'selected' : '' }}>
+              {{ $loc }}
+            </option>
+          @endforeach
         </select>
       </div>
 
       <div class="col-md-6">
         <label class="form-label text-light">Drop-off Location</label>
         <select name="dropoff_location" class="form-control" required>
-          <option value="">Select Drop Area</option>
-          <option value="Madurai">Madurai</option>
-          <option value="Trichy" selected>Trichy</option>
-          <option value="Coimbatore">Coimbatore</option>
-          <option value="Chennai">Chennai</option>
+          <option value="">Select Drop-off Area</option>
+          @foreach($locations as $loc)
+            <option value="{{ $loc }}" {{ (isset($dropoffLocation) && $dropoffLocation==$loc) ? 'selected' : '' }}>
+              {{ $loc }}
+            </option>
+          @endforeach
         </select>
       </div>
 
       <div class="col-md-6">
         <label class="form-label text-light">Pickup Date</label>
-        <input type="date" name="pickup_date" class="form-control"
-              value="{{ date('Y-m-d') }}" required>
+        <input type="date" name="pickup_date" class="form-control" 
+          value="{{ $pickupDate ?? date('Y-m-d') }}" required>
       </div>
 
       <div class="col-md-6">
         <label class="form-label text-light">Return Date</label>
-        <input type="date" name="return_date" class="form-control"
-              value="{{ date('Y-m-d', strtotime('+1 day')) }}" required>
+        <input type="date" name="return_date" class="form-control" 
+          value="{{ $returnDate ?? date('Y-m-d', strtotime('+1 day')) }}" required>
       </div>
 
       <div class="col-12">
@@ -83,44 +96,5 @@
     <button class="btn btn-orange w-100 mt-4 py-2 fw-semibold rounded-pill">Confirm Booking</button>
   </form>
 </div>
-
-<style>
-.booking-wrapper {
-  width: 100%;
-  min-height: 100vh;
-}
-
-.glass-form {
-  max-width: 800px;
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-.form-control {
-  background: rgba(255, 255, 255, 0.15);
-  border: none;
-  color: #fff;
-}
-
-.form-control::placeholder {
-  color: #eee;
-}
-
-label {
-  font-weight: 500;
-}
-
-.btn-orange {
-  background: #F96D00;
-  color: #fff;
-  border: none;
-  transition: 0.3s;
-}
-
-.btn-orange:hover {
-  background: #ff7f20;
-  box-shadow: 0 0 12px #F96D00;
-}
-</style>
+<style> .booking-wrapper { width: 100%; min-height: 100vh; } .glass-form { max-width: 800px; background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.3); } .form-control { background: rgba(255, 255, 255, 0.15); border: none; color: #fff; } .form-control::placeholder { color: #eee; } label { font-weight: 500; } .btn-orange { background: #F96D00; color: #fff; border: none; transition: 0.3s; } .btn-orange:hover { background: #ff7f20; box-shadow: 0 0 12px #F96D00; } </style>
 @endsection

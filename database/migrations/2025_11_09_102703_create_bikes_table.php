@@ -9,13 +9,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('bikes', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->integer('price_per_day');
-            $table->string('image')->nullable();
-            $table->text('description')->nullable();
-            $table->timestamps();
-        });
+    $table->id();
+    $table->string('name');
+    $table->decimal('price_per_day', 8, 2);
+    $table->string('image')->nullable();
+    $table->timestamps();
+});
+
     }
 
     public function down(): void

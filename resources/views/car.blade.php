@@ -71,7 +71,7 @@
               <p class="price ml-auto">Rs:2000 <span>/day</span></p>
             </div>
             <p class="d-flex mb-0 d-block">
-              <a href="{{ route('book') }}" class="btn btn-primary py-2 mr-1">Book now</a>
+              <a href="{{ route('book.create') }}" class="btn btn-primary py-2 mr-1">Book now</a>
               <a href="#" class="btn btn-secondary py-2 ml-1">Details</a>
             </p>
           </div>
@@ -88,7 +88,7 @@
               <p class="price ml-auto">Rs:3500 <span>/day</span></p>
             </div>
             <p class="d-flex mb-0 d-block">
-              <a href="{{ route('book') }}" class="btn btn-primary py-2 mr-1">Book now</a>
+              <a href="{{ route('book.create') }}" class="btn btn-primary py-2 mr-1">Book now</a>
               <a href="#" class="btn btn-secondary py-2 ml-1">Details</a>
             </p>
           </div>
@@ -105,7 +105,7 @@
               <p class="price ml-auto">Rs:2500 <span>/day</span></p>
             </div>
             <p class="d-flex mb-0 d-block">
-              <a href="{{ route('book') }}" class="btn btn-primary py-2 mr-1">Book now</a>
+              <a href="{{ route('book.create') }}" class="btn btn-primary py-2 mr-1">Book now</a>
               <a href="#" class="btn btn-secondary py-2 ml-1">Details</a>
             </p>
           </div>
@@ -122,7 +122,7 @@
               <p class="price ml-auto">Rs:4000 <span>/day</span></p>
             </div>
             <p class="d-flex mb-0 d-block">
-              <a href="{{ route('book') }}" class="btn btn-primary py-2 mr-1">Book now</a>
+              <a href="{{ route('book.create') }}" class="btn btn-primary py-2 mr-1">Book now</a>
               <a href="#" class="btn btn-secondary py-2 ml-1">Details</a>
             </p>
           </div>
@@ -139,7 +139,7 @@
               <p class="price ml-auto">Rs:1800 <span>/day</span></p>
             </div>
             <p class="d-flex mb-0 d-block">
-              <a href="{{ route('book') }}" class="btn btn-primary py-2 mr-1">Book now</a>
+              <a href="{{ route('book.create') }}" class="btn btn-primary py-2 mr-1">Book now</a>
               <a href="#" class="btn btn-secondary py-2 ml-1">Details</a>
             </p>
           </div>
@@ -156,7 +156,7 @@
               <p class="price ml-auto">Rs:2200 <span>/day</span></p>
             </div>
             <p class="d-flex mb-0 d-block">
-              <a href="{{ route('book') }}" class="btn btn-primary py-2 mr-1">Book now</a>
+              <a href="{{ route('book.create') }}" class="btn btn-primary py-2 mr-1">Book now</a>
               <a href="#" class="btn btn-secondary py-2 ml-1">Details</a>
             </p>
           </div>
@@ -173,7 +173,7 @@
               <p class="price ml-auto">Rs:1600 <span>/day</span></p>
             </div>
             <p class="d-flex mb-0 d-block">
-              <a href="{{ route('book') }}" class="btn btn-primary py-2 mr-1">Book now</a>
+              <a href="{{ route('book.create') }}" class="btn btn-primary py-2 mr-1">Book now</a>
               <a href="#" class="btn btn-secondary py-2 ml-1">Details</a>
             </p>
           </div>
@@ -190,7 +190,7 @@
               <p class="price ml-auto">Rs:1700 <span>/day</span></p>
             </div>
             <p class="d-flex mb-0 d-block">
-              <a href="{{ route('book') }}" class="btn btn-primary py-2 mr-1">Book now</a>
+              <a href="{{ route('book.create') }}" class="btn btn-primary py-2 mr-1">Book now</a>
               <a href="#" class="btn btn-secondary py-2 ml-1">Details</a>
             </p>
           </div>
@@ -207,7 +207,7 @@
               <p class="price ml-auto">Rs:1400 <span>/day</span></p>
             </div>
             <p class="d-flex mb-0 d-block">
-              <a href="{{ route('book') }}" class="btn btn-primary py-2 mr-1">Book now</a>
+              <a href="{{ route('book.create') }}" class="btn btn-primary py-2 mr-1">Book now</a>
               <a href="#" class="btn btn-secondary py-2 ml-1">Details</a>
             </p>
           </div>
@@ -222,7 +222,7 @@
               <p class="price ml-auto">Rs:3000 <span>/day</span></p>
             </div>
             <p class="d-flex mb-0 d-block">
-              <a href="{{ route('book') }}" class="btn btn-primary py-2 mr-1">Book now</a>
+              <a href="{{ route('book.create') }}" class="btn btn-primary py-2 mr-1">Book now</a>
               <a href="#" class="btn btn-secondary py-2 ml-1">Details</a>
             </p>
           </div>
@@ -239,7 +239,7 @@
               <p class="price ml-auto">Rs:5500 <span>/day</span></p>
             </div>
             <p class="d-flex mb-0 d-block">
-              <a href="{{ route('book') }}" class="btn btn-primary py-2 mr-1">Book now</a>
+              <a href="{{ route('book.create') }}" class="btn btn-primary py-2 mr-1">Book now</a>
               <a href="#" class="btn btn-secondary py-2 ml-1">Details</a>
             </p>
           </div>
@@ -256,7 +256,7 @@
               <p class="price ml-auto">Rs:5000 <span>/day</span></p>
             </div>
             <p class="d-flex mb-0 d-block">
-              <a href="{{ route('book') }}" class="btn btn-primary py-2 mr-1">Book now</a>
+              <a href="{{ route('book.create') }}" class="btn btn-primary py-2 mr-1">Book now</a>
               <a href="#" class="btn btn-secondary py-2 ml-1">Details</a>
             </p>
           </div>
@@ -280,19 +280,7 @@
         </div>
       </div>
 
-      <!-- Quick Links -->
-      <div class="col-md">
-        <div class="ftco-footer-widget mb-4 ml-md-5">
-          <h2 class="ftco-heading-2">Quick Links</h2>
-          <ul class="list-unstyled">
-            <li><a href="{{ route('home') }}" class="nav-link">Home</a></li>
-            <li><a href="{{ route('about') }}" class="nav-link">About</a></li>
-            <li><a href="{{ route('services') }}" class="nav-link">Services</a></li>
-            <li><a href="{{ route('bikes') }}" class="nav-link">Bikes</a></li>
-            <li><a href="{{ route('contact') }}" class="nav-link">Contact</a></li>
-          </ul>
-        </div>
-      </div>
+    
 
       <!-- Contact Info -->
       <div class="col-md">

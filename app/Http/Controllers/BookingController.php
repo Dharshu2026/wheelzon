@@ -1,60 +1,45 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Bike;
 use App\Models\Booking;
-use App\Models\Bike; // 👈 add this line
-use Illuminate\Support\Facades\Mail;
 
 class BookingController extends Controller
 {
-   
-public function create()
-{
-    $today = date('Y-m-d');
-    $tomorrow = date('Y-m-d', strtotime('+1 day'));
-    $bikes = Bike::all();
+    public function create(Request $request)
+    {
+        $bikes = Bike::all(); // fetch all bikes
 
-    return view('book', [
-        'pickup_default' => 'Madurai',
-        'dropoff_default' => 'Trichy',
-        'pickup_date' => $today,
-        'return_date' => $tomorrow,
-        'bikes' => $bikes,
-    ]);
-}
+        $pickupLocation = $request->pickup_location ?? '';
+        $dropoffLocation = $request->drop_location ?? '';
+        $pickupDate = $request->pickup_date ?? date('Y-m-d');
+        $returnDate = $request->return_date ?? date('Y-m-d', strtotime('+1 day'));
 
+        return view('book', compact(
+            'bikes',
+            'pickupLocation',
+            'dropoffLocation',
+            'pickupDate',
+            'returnDate'
+        ));
+    }
 
-    // Store booking details
     public function store(Request $request)
     {
-        $data = $request->validate([
-            'name' => 'required',
+        $request->validate([
+            'name' => 'required|string',
             'email' => 'required|email',
-            'phone' => 'required',
-            'bike' => 'required',
-            'pickup_location' => 'required',
-            'dropoff_location' => 'required',
+            'phone' => 'required|string',
+            'bike_id' => 'required|exists:bikes,id',
+            'pickup_location' => 'required|string',
+            'dropoff_location' => 'required|string',
             'pickup_date' => 'required|date',
             'return_date' => 'required|date|after_or_equal:pickup_date',
-            'pickup_time' => 'nullable|string',
-            'notes' => 'nullable|string',
         ]);
 
-        // Save booking
-        Booking::create($data);
+        Booking::create($request->all());
 
-        // Send email
-        try {
-            Mail::send('emails.booking', ['booking' => (object) $data], function ($message) use ($data) {
-                $message->to('dharshdharsh1020@gmail.com')
-                        ->subject('🚲 New Bike Booking - WheelzOn');
-            });
-
-            return back()->with('success', 'Booking successful! Confirmation mail sent.');
-        } catch (\Exception $e) {
-            return back()->with('success', 'Booking saved, but mail not sent. Error: ' . $e->getMessage());
-        }
+        return redirect()->back()->with('success', 'Ride booked successfully!');
     }
 }

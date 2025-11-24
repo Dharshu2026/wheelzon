@@ -9,10 +9,6 @@ class Bike extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'name',
-        'price_per_day',
-        'image',
-        'description',
-    ];
+    protected $fillable = ['name', 'price_per_day', 'image'];
+
 }

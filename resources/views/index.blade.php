@@ -104,7 +104,7 @@
     			<div class="col-md-12	featured-top">
     				<div class="row no-gutters">
 	  					<div class="col-md-4 d-flex align-items-center">
-	  <form action="{{ route('book') }}" method="GET" class="request-form ftco-animate bg-primary" style="width: 500px; border-radius: 10px; padding: 25px;">
+	  <form action="{{ route('book.create') }}" method="GET" class="request-form ftco-animate bg-primary" style="width: 500px; border-radius: 10px; padding: 25px;">
   <h2 class="text-white mb-4">Make your trip</h2>
 
   <div class="form-group">
