@@ -75,25 +75,32 @@
   </head>
   <body>
 
-  <!-- 🌐 Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+ <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
     <div class="container">
-      <a class="navbar-brand" href="{{ route('home') }}">Wheelz<span>On</span></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav">
+      <a class="navbar-brand" href="index">Wheelz<span>On</span></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="oi oi-menu"></span> Menu
       </button>
 
       <div class="collapse navbar-collapse" id="ftco-nav">
         <ul class="navbar-nav ml-auto">
+
           <li class="nav-item"><a class="nav-link" href="{{ route('home') }}">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="{{ route('about') }}">About</a></li>
           <li class="nav-item"><a class="nav-link" href="{{ route('services') }}">Services</a></li>
           <li class="nav-item"><a class="nav-link" href="{{ route('bikes') }}">Bikes</a></li>
-          <li class="nav-item active"><a class="nav-link" href="{{ route('contact') }}">Contact</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ route('contact') }}">Contact</a></li>
+
+          <!-- 🔥 Added Login button -->
+          <li class="nav-item">
+            <a class="nav-link btn btn-primary text-white px-3 ml-3" href="{{ route('login') }}">Login</a>
+          </li>
+
         </ul>
       </div>
     </div>
-  </nav>
+</nav>
+
 
   <!-- Hero -->
   <section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('{{ asset('images/bg_3.jpg') }}');" data-stellar-background-ratio="0.5">

@@ -1,51 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>WheelzOn | @yield('title')</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>WheelzOn | @yield('title')</title>
 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/open-iconic-bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/animate.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
-  <style>
-    body {
-      background: #0d0d0d;
-      color: #fff;
-      min-height: 100vh;
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-    }
-
-    nav.navbar {
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-    }
-
-    footer {
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(8px);
-      color: #ccc;
-      padding: 15px;
-      text-align: center;
-      font-size: 14px;
-    }
-  </style>
+    <style>
+        .navbar-brand span { color: #f96d00 !important; }
+        /* Dropdown black text fix */
+        .dropdown-menu { background: #fff !important; border: none; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .dropdown-item { color: #000 !important; }
+        .dropdown-item:hover { background: #f96d00; color: #fff !important; }
+    </style>
 </head>
 <body>
 
-  {{-- Navbar (optional) --}}
-  <nav class="navbar navbar-expand-lg navbar-dark px-4">
-    <a class="navbar-brand fw-bold text-warning" href="#">WheelzOn</a>
-  </nav>
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+    <div class="container">
+      <a class="navbar-brand" href="{{ route('home') }}">Wheelz<span>On</span></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav">
+        <span class="oi oi-menu"></span> Menu
+      </button>
 
-  <main>
-    @yield('content')
-  </main>
+      <div class="collapse navbar-collapse" id="ftco-nav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a class="nav-link" href="{{ route('home') }}">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ route('about') }}">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ route('bikes') }}">Bikes</a></li>
+          
+          @guest
+            <li class="nav-item"><a class="nav-link btn btn-primary text-white px-3 ml-lg-3" href="{{ route('login') }}">Login</a></li>
+          @else
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navDrop" data-toggle="dropdown">Hi, {{ Auth::user()->name }}</a>
+              <div class="dropdown-menu dropdown-menu-right">
+                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">@csrf</form>
+              </div>
+            </li>
+          @endguest
+        </ul>
+      </div>
+    </div>
+</nav>
 
-  <footer>
-    © {{ date('Y') }} WheelzOn. All Rights Reserved.
-  </footer>
+@yield('content')
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<footer class="ftco-footer ftco-bg-dark ftco-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <p>&copy; 2025 WheelzOn | All Rights Reserved</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="{{ asset('js/jquery.min.js') }}"></script>
+<script src="{{ asset('js/popper.min.js') }}"></script>
+<script src="{{ asset('js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('js/main.js') }}"></script>
+
 </body>
 </html>

@@ -9,6 +9,7 @@ class Booking extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 'email', 'phone', 'bike', 'pickup_date', 'return_date', 'notes'
-    ];
+    'name', 'email', 'phone', 'bike', 'pickup_location', 
+    'dropoff_location', 'pickup_date', 'return_date', 'notes'
+];
 }

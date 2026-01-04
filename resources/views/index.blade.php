@@ -54,26 +54,48 @@
   </head>
   <body>
     
-	  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-	    <div class="container">
-	      <a class="navbar-brand" href="index">Wheelz<span>On</span></a>
-	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-	        <span class="oi oi-menu"></span> Menu
-	      </button>
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+    <div class="container">
+      <a class="navbar-brand" href="{{ route('home') }}">Wheelz<span>On</span></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="oi oi-menu"></span> Menu
+      </button>
 
-	      <div class="collapse navbar-collapse" id="ftco-nav">
-	        <ul class="navbar-nav ml-auto">
-	        <li class="nav-item"><a class="nav-link" href="{{ route('home') }}">Home</a></li>
-<li class="nav-item"><a class="nav-link" href="{{ route('about') }}">About</a></li>
-<li class="nav-item"><a class="nav-link" href="{{ route('services') }}">Services</a></li>
+      <div class="collapse navbar-collapse" id="ftco-nav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active"><a class="nav-link" href="{{ route('home') }}">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ route('about') }}">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ route('services') }}">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ route('bikes') }}">Bikes</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ route('contact') }}">Contact</a></li>
 
-<li class="nav-item"><a class="nav-link" href="{{ route('bikes') }}">Bikes</a></li>
-<li class="nav-item"><a class="nav-link" href="{{ route('contact') }}">Contact</a></li>
+          @guest
+            <li class="nav-item">
+              <a class="nav-link btn btn-primary text-white px-3 ml-3" href="{{ route('login') }}">Login</a>
+            </li>
+          @else
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle btn btn-primary text-white px-3 ml-3" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{ Auth::user()->name }}
+              </a>
+              <div class="dropdown-menu dropdown-menu-right shadow border-0" aria-labelledby="userDropdown">
+                <a class="dropdown-item" href="{{ route('logout') }}" 
+                   onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                   style="color: #000 !important;">
+                   Logout
+                </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
+              </div>
+            </li>
+          @endguest
 
-	        </ul>
-	      </div>
-	    </div>
-	  </nav>
+        </ul>
+      </div>
+    </div>
+</nav>
+
     <!-- END nav -->
     
     <div class="hero-wrap ftco-degree-bg" style="background-image: url('images/bg_1.jpg');" data-stellar-background-ratio="0.5">

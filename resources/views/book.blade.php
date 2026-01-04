@@ -9,9 +9,10 @@
   @if(session('success'))
     <div class="alert alert-success text-center">{{ session('success') }}</div>
   @endif
-
-  <form method="POST" action="{{ route('book.store') }}" class="glass-form mx-auto p-4 rounded-4 shadow-lg">
-    @csrf
+@auth
+     <form method="POST" action="{{ route('book.store') }}" class="glass-form mx-auto p-4 rounded-4 shadow-lg">
+        @csrf
+ 
     <div class="row g-4">
 
       <div class="col-md-6">
@@ -95,6 +96,72 @@
 
     <button class="btn btn-orange w-100 mt-4 py-2 fw-semibold rounded-pill">Confirm Booking</button>
   </form>
+  @endauth
+
 </div>
-<style> .booking-wrapper { width: 100%; min-height: 100vh; } .glass-form { max-width: 800px; background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.3); } .form-control { background: rgba(255, 255, 255, 0.15); border: none; color: #fff; } .form-control::placeholder { color: #eee; } label { font-weight: 500; } .btn-orange { background: #F96D00; color: #fff; border: none; transition: 0.3s; } .btn-orange:hover { background: #ff7f20; box-shadow: 0 0 12px #F96D00; } </style>
+<style> 
+  .booking-wrapper { 
+    width: 100%; 
+    min-height: 100vh; 
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); 
+  } 
+
+  .glass-form { 
+    max-width: 800px; 
+    background: rgba(255, 255, 255, 0.1); 
+    backdrop-filter: blur(20px); 
+    border: 1px solid rgba(255, 255, 255, 0.2); 
+  } 
+
+  /* Normal State: Transparent background with white text */
+  .form-control { 
+    background: rgba(255, 255, 255, 0.1) !important; 
+    border: 1px solid rgba(255, 255, 255, 0.2); 
+    color: #ffffff !important; 
+  }
+
+  /* Focus State: Clicking inside won't turn it white anymore */
+  .form-control:focus {
+    background: rgba(255, 255, 255, 0.15) !important; /* Slightly more visible but still transparent */
+    color: #ffffff !important;
+    border-color: #F96D00; /* Border orange-ah maarum */
+    box-shadow: none;
+    outline: none;
+  }
+
+  /* Critical Fix: Chrome/Safari Autofill (Saved info) transparent background */
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover, 
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    -webkit-text-fill-color: #ffffff !important;
+    -webkit-box-shadow: 0 0 0px 1000px rgba(255, 255, 255, 0.1) inset !important;
+    transition: background-color 5000s ease-in-out 0s;
+  }
+
+  /* Dropdown (Select) options black text-ah maathuradharku (visibility in dropdown) */
+  select option {
+    background-color: #1a1a2e; /* Dark background inside dropdown */
+    color: white;
+  }
+
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+  }
+
+  .form-control::placeholder { color: #ccc; } 
+  label { font-weight: 500; } 
+
+  .btn-orange { 
+    background: #F96D00; 
+    color: #fff; 
+    border: none; 
+    transition: 0.3s; 
+  } 
+  .btn-orange:hover { 
+    background: #ff7f20; 
+    box-shadow: 0 0 12px #F96D00; 
+  } 
+</style>
+
 @endsection
